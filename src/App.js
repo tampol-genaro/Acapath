@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Home from './components/pages/Home';
+import Question from './components/pages/Question';
+import Result from './components/pages/Result';
+import Navbar from './components/inc/Navbar';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          femini <code>src/App.js</code> hhrap mamam guys
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  return React.createElement(
+   // Non-JSX version with wrapper div
+function App() {
+  return React.createElement(
+    'div',
+    null,
+    React.createElement(
+      Router,
+      null,
+      React.createElement(Navbar),
+      React.createElement(
+        Routes,
+        null,
+        React.createElement(Route, { path: "/", element: React.createElement(Home) }),
+        React.createElement(Route, { path: "/question", element: React.createElement(Question) }),
+        React.createElement(Route, { path: "/result", element: React.createElement(Result) })
+      )
+    )
+  );
+}
   );
 }
 
