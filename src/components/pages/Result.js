@@ -2,15 +2,12 @@ import React, { useState } from 'react';
 import './Result.css';
 
 function Resultus() {
-  // State to store the student's responses
   const [answers, setAnswers] = useState([]);
   const [track, setTrack] = useState('');
 
-  // Function to handle the submission
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // Track counters
     const trackResults = {
       STEM: 0,
       ABM: 0,
@@ -18,7 +15,6 @@ function Resultus() {
       ArtsAndDesign: 0,
     };
 
-    // Count answers for each track
     answers.forEach((answer) => {
       if (answer === 'A') trackResults.STEM += 1;
       if (answer === 'B') trackResults.ABM += 1;
@@ -26,17 +22,16 @@ function Resultus() {
       if (answer === 'D') trackResults.ArtsAndDesign += 1;
     });
 
-    // Determine the track with the highest score
     const bestTrack = Object.keys(trackResults).reduce((a, b) =>
       trackResults[a] > trackResults[b] ? a : b
     );
 
-    setTrack(bestTrack);  // Set the best track based on results
+    setTrack(bestTrack);  
   };
 
   const handleChange = (e) => {
     const { value } = e.target;
-    setAnswers((prevAnswers) => [...prevAnswers, value]);  // Update the answer array
+    setAnswers((prevAnswers) => [...prevAnswers, value]);
   };
 
   return (
@@ -45,7 +40,7 @@ function Resultus() {
         <div className="card-body">
           <h1>Track Assessment Result</h1>
           <form onSubmit={handleSubmit}>
-            {/* Example of questions with radio buttons */}
+            
             <div className="question">
               <p>1. What subjects do you enjoy the most?</p>
               <label>
@@ -61,13 +56,10 @@ function Resultus() {
                 <input type="radio" value="D" onChange={handleChange} /> Technology and Business
               </label>
             </div>
-
-            {/* Add other questions similarly */}
             
             <button type="submit">Submit</button>
           </form>
 
-          {/* Display result after submission */}
           {track && (
             <div className="result">
               <h2>Your Best Track: {track}</h2>

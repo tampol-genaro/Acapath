@@ -8,7 +8,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   return React.createElement(
-   // Non-JSX version with wrapper div
 function App() {
   return React.createElement(
     'div',
